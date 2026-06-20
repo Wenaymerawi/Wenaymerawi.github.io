@@ -1,1 +1,697 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wenay Merawi — Web Developer & DBA</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+:root{
+  --blue:#2563EB;
+  --blue2:#1D4ED8;
+  --purple:#7C3AED;
+  --cyan:#06B6D4;
+  --green:#10B981;
+  --orange:#F59E0B;
+  --pink:#EC4899;
+  --white:#FFFFFF;
+  --light:#F8FAFC;
+  --gray:#64748B;
+  --dark:#1E293B;
+  --text:#334155;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--white);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  border-bottom:2px solid #E2E8F0;
+  padding:0 1.5rem;
+  height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-size:1.1rem;font-weight:800;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.nav-menu{display:flex;gap:0.25rem;list-style:none;}
+.nav-menu a{
+  padding:0.4rem 0.75rem;
+  border-radius:20px;
+  font-size:0.78rem;font-weight:600;
+  color:var(--gray);text-decoration:none;
+  transition:all 0.2s;
+}
+.nav-menu a:hover{background:var(--blue);color:white;}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(135deg,#EFF6FF 0%,#F5F3FF 50%,#ECFDF5 100%);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:5rem 1.5rem 3rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-50%;left:-50%;
+  width:200%;height:200%;
+  background:radial-gradient(circle at 30% 40%,rgba(37,99,235,0.08) 0%,transparent 50%),
+             radial-gradient(circle at 70% 60%,rgba(124,58,237,0.08) 0%,transparent 50%);
+}
+.hero-inner{position:relative;max-width:700px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:white;
+  border:2px solid #DBEAFE;
+  border-radius:30px;
+  padding:0.4rem 1.2rem;
+  font-size:0.8rem;font-weight:600;
+  color:var(--blue);
+  margin-bottom:1.5rem;
+  box-shadow:0 2px 10px rgba(37,99,235,0.1);
+}
+.dot{width:8px;height:8px;border-radius:50%;background:#10B981;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{
+  font-size:clamp(2rem,7vw,3.5rem);
+  font-weight:800;
+  line-height:1.1;
+  margin-bottom:1rem;
+  color:var(--dark);
+}
+.hero h1 span{
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-sub{
+  font-size:1rem;color:var(--gray);
+  margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;
+}
+.hero-stats{
+  display:flex;justify-content:center;gap:1rem;
+  flex-wrap:wrap;margin-bottom:2rem;
+}
+.stat-pill{
+  background:white;
+  border-radius:12px;
+  padding:0.75rem 1.25rem;
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  border:1px solid #E2E8F0;
+  text-align:center;
+  min-width:100px;
+}
+.stat-pill .num{font-size:1.5rem;font-weight:800;color:var(--blue);}
+.stat-pill .lbl{font-size:0.7rem;color:var(--gray);font-weight:500;}
+.hero-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;}
+.btn{
+  padding:0.8rem 1.75rem;
+  border-radius:30px;
+  font-size:0.9rem;font-weight:700;
+  text-decoration:none;
+  transition:all 0.2s;
+  display:inline-flex;align-items:center;gap:0.4rem;
+}
+.btn-blue{
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  color:white;
+  box-shadow:0 4px 15px rgba(37,99,235,0.35);
+}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.45);}
+.btn-white{
+  background:white;color:var(--blue);
+  border:2px solid #DBEAFE;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.btn-white:hover{border-color:var(--blue);transform:translateY(-2px);}
+
+/* ===== SECTIONS ===== */
+.section{padding:4rem 1.5rem;max-width:1100px;margin:0 auto;}
+.section-tag{
+  display:inline-block;
+  background:linear-gradient(135deg,#DBEAFE,#EDE9FE);
+  color:var(--blue);
+  font-size:0.72rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.1em;
+  padding:0.3rem 1rem;border-radius:20px;
+  margin-bottom:0.75rem;
+}
+.section-title{
+  font-size:clamp(1.6rem,4vw,2.2rem);
+  font-weight:800;color:var(--dark);
+  margin-bottom:0.5rem;
+}
+.section-desc{color:var(--gray);font-size:0.95rem;margin-bottom:2.5rem;}
+
+/* ===== DIVIDER ===== */
+.divider{height:4px;background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));margin:0;}
+
+/* ===== ABOUT ===== */
+.about-bg{background:var(--light);}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;align-items:start;
+}
+.about-text p{
+  color:var(--text);font-size:0.92rem;
+  line-height:1.8;margin-bottom:0.9rem;
+}
+.about-text strong{color:var(--blue);}
+.info-cards{display:flex;flex-direction:column;gap:0.75rem;}
+.info-card{
+  background:white;
+  border-radius:12px;
+  padding:0.9rem 1.1rem;
+  display:flex;gap:0.75rem;align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+  border-left:4px solid var(--blue);
+}
+.info-card.green{border-left-color:var(--green);}
+.info-card.purple{border-left-color:var(--purple);}
+.info-card.orange{border-left-color:var(--orange);}
+.info-card.cyan{border-left-color:var(--cyan);}
+.info-icon{font-size:1.3rem;flex-shrink:0;}
+.info-label{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray);}
+.info-val{font-size:0.85rem;font-weight:600;color:var(--dark);}
+
+/* ===== SKILLS ===== */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
+  gap:1rem;
+}
+.skill-card{
+  background:white;
+  border-radius:16px;
+  padding:1.25rem;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.07);
+  border:2px solid transparent;
+  transition:all 0.25s;
+}
+.skill-card:hover{
+  border-color:var(--blue);
+  transform:translateY(-4px);
+  box-shadow:0 8px 25px rgba(37,99,235,0.15);
+}
+.skill-emoji{font-size:2rem;margin-bottom:0.5rem;}
+.skill-name{font-size:0.85rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
+.skill-desc{font-size:0.7rem;color:var(--gray);}
+.skill-bar{
+  height:5px;background:#E2E8F0;border-radius:5px;margin-top:0.75rem;overflow:hidden;
+}
+.skill-bar-fill{
+  height:100%;border-radius:5px;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+}
+
+/* ===== PROJECTS ===== */
+.projects-bg{background:linear-gradient(135deg,#F0F9FF,#F5F3FF);}
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.25rem;
+}
+.project-card{
+  background:white;
+  border-radius:16px;
+  padding:1.5rem;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+  border:2px solid transparent;
+  transition:all 0.25s;
+  position:relative;
+  overflow:hidden;
+}
+.project-card::after{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+}
+.project-card:hover{border-color:#DBEAFE;transform:translateY(-4px);box-shadow:0 10px 30px rgba(37,99,235,0.12);}
+.project-badge{
+  display:inline-block;
+  padding:0.25rem 0.75rem;border-radius:20px;
+  font-size:0.68rem;font-weight:700;
+  margin-bottom:0.9rem;
+}
+.badge-star{background:#FEF3C7;color:#D97706;}
+.badge-work{background:#D1FAE5;color:#065F46;}
+.badge-progress{background:#EDE9FE;color:#6D28D9;}
+.project-title{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.6rem;}
+.project-desc{font-size:0.82rem;color:var(--gray);line-height:1.65;margin-bottom:1rem;}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.tag{
+  padding:0.2rem 0.6rem;
+  background:#F1F5F9;border-radius:6px;
+  font-size:0.68rem;font-weight:600;color:var(--blue);
+}
+
+/* ===== EXPERIENCE ===== */
+.exp-card{
+  background:white;
+  border-radius:16px;
+  padding:2rem;
+  box-shadow:0 4px 20px rgba(0,0,0,0.07);
+  max-width:700px;
+  border-left:5px solid var(--blue);
+}
+.exp-role{font-size:1.15rem;font-weight:800;color:var(--dark);}
+.exp-org{
+  font-size:0.9rem;font-weight:600;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin:0.2rem 0;
+}
+.exp-period{
+  display:inline-block;
+  background:#DBEAFE;color:var(--blue);
+  font-size:0.72rem;font-weight:700;
+  padding:0.2rem 0.75rem;border-radius:20px;
+  margin-bottom:1.1rem;
+}
+.exp-list{list-style:none;}
+.exp-list li{
+  display:flex;gap:0.75rem;
+  font-size:0.85rem;color:var(--text);
+  padding:0.4rem 0;
+  border-bottom:1px solid #F1F5F9;
+}
+.exp-list li:last-child{border:none;}
+.exp-list li::before{content:'✅';flex-shrink:0;}
+
+/* ===== EDUCATION ===== */
+.edu-bg{background:var(--light);}
+.edu-card{
+  background:white;
+  border-radius:16px;
+  padding:2rem;
+  box-shadow:0 4px 20px rgba(0,0,0,0.07);
+  max-width:600px;
+  display:flex;gap:1.25rem;align-items:flex-start;
+}
+.edu-icon{
+  width:56px;height:56px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+}
+.edu-degree{font-size:1rem;font-weight:800;color:var(--dark);}
+.edu-school{font-size:0.85rem;color:var(--blue);font-weight:600;margin:0.2rem 0;}
+.edu-year{font-size:0.78rem;color:var(--gray);margin-bottom:0.75rem;}
+.edu-badges{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.edu-badge{
+  padding:0.3rem 0.85rem;border-radius:20px;
+  font-size:0.72rem;font-weight:700;
+}
+.eb-blue{background:#DBEAFE;color:#1D4ED8;}
+.eb-green{background:#D1FAE5;color:#065F46;}
+.eb-purple{background:#EDE9FE;color:#6D28D9;}
+
+/* ===== CONTACT ===== */
+.contact-bg{background:linear-gradient(135deg,#EFF6FF,#F5F3FF);}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+}
+.contact-intro{font-size:0.92rem;color:var(--text);line-height:1.8;margin-bottom:1.5rem;}
+.contact-links{display:flex;flex-direction:column;gap:0.75rem;}
+.contact-link{
+  display:flex;gap:0.9rem;align-items:center;
+  background:white;
+  border-radius:12px;padding:0.9rem 1.1rem;
+  text-decoration:none;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+  border:2px solid transparent;
+  transition:all 0.2s;
+  color:var(--dark);
+}
+.contact-link:hover{border-color:var(--blue);transform:translateX(4px);}
+.cl-icon{font-size:1.25rem;}
+.cl-label{font-size:0.65rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:0.07em;}
+.cl-val{font-size:0.85rem;font-weight:600;color:var(--dark);}
+.contact-form{display:flex;flex-direction:column;gap:0.75rem;}
+.contact-form input,
+.contact-form textarea{
+  padding:0.85rem 1rem;
+  border:2px solid #E2E8F0;
+  border-radius:12px;
+  font-family:'Poppins',sans-serif;
+  font-size:0.88rem;
+  color:var(--dark);
+  outline:none;
+  background:white;
+  transition:border-color 0.2s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus{border-color:var(--blue);}
+.contact-form textarea{min-height:120px;resize:vertical;}
+.contact-form button{
+  padding:0.9rem;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  color:white;font-weight:700;font-size:0.9rem;
+  border:none;border-radius:12px;
+  cursor:pointer;font-family:'Poppins',sans-serif;
+  transition:all 0.2s;
+  box-shadow:0 4px 15px rgba(37,99,235,0.3);
+}
+.contact-form button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4);}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--dark);color:#94A3B8;
+  text-align:center;padding:1.5rem;
+  font-size:0.82rem;
+}
+footer a{color:#60A5FA;text-decoration:none;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .nav-menu{display:none;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:0.6rem;}
+  .stat-pill{min-width:80px;padding:0.6rem 0.9rem;}
+  .stat-pill .num{font-size:1.2rem;}
+  .section{padding:3rem 1.25rem;}
+  .edu-card{flex-direction:column;}
+  .hero-btns .btn{padding:0.7rem 1.25rem;font-size:0.82rem;}
+}
+@media(max-width:400px){
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .projects-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Wenay Merawi</div>
+  <ul class="nav-menu">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Available for Work — Remote or Local
+    </div>
+    <h1>Hi, I'm <span>Wenay Merawi</span> 👋<br>Web Developer & DBA</h1>
+    <p class="hero-sub">CS Graduate from Raya University with 3.90 CGPA and 2 years of real professional experience. I build web systems that solve real problems.</p>
+    <div class="hero-stats">
+      <div class="stat-pill">
+        <div class="num">3.90</div>
+        <div class="lbl">CGPA</div>
+      </div>
+      <div class="stat-pill">
+        <div class="num">2+</div>
+        <div class="lbl">Years Exp</div>
+      </div>
+      <div class="stat-pill">
+        <div class="num">6+</div>
+        <div class="lbl">Technologies</div>
+      </div>
+      <div class="stat-pill">
+        <div class="num">4</div>
+        <div class="lbl">Languages</div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-blue">🚀 See My Work</a>
+      <a href="#contact" class="btn btn-white">💬 Contact Me</a>
+      <a href="https://www.linkedin.com/in/wenay-merawi-4a4626410" target="_blank" class="btn btn-white">💼 LinkedIn</a>
+      <a href="https://github.com/Wenaymerawi" target="_blank" class="btn btn-white">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<div class="about-bg">
+<div class="section" id="about">
+  <div class="section-tag">About Me</div>
+  <h2 class="section-title">Who I Am 🇪🇹</h2>
+  <p class="section-desc">A passionate developer from Ethiopia, ready to work with the world.</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm <strong>Wenay Merawi</strong>, a Computer Science graduate from Raya University, Ethiopia, where I graduated with a <strong>3.90 CGPA</strong> — one of the top students in my program.</p>
+      <p>For 2 years I worked as a <strong>Database Administrator</strong> at Abergelie Woreda Court, managing real government database systems. This gave me professional experience that most fresh graduates don't have.</p>
+      <p>I love coding and building things. My thesis was a complete <strong>Web-Based Customer Service Management System</strong> — I designed and built it from scratch using PHP and MySQL.</p>
+      <p>I speak <strong>4 languages</strong> — English, Amharic, Agewegna, and Tigrigna — which makes me a strong communicator across different teams and cultures.</p>
+    </div>
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-icon">🎓</div>
+        <div>
+          <div class="info-label">Education</div>
+          <div class="info-val">BSc Computer Science — Raya University</div>
+        </div>
+      </div>
+      <div class="info-card green">
+        <div class="info-icon">💼</div>
+        <div>
+          <div class="info-label">Status</div>
+          <div class="info-val">Actively looking for opportunities</div>
+        </div>
+      </div>
+      <div class="info-card purple">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Location</div>
+          <div class="info-val">Ethiopia · Open to Remote Work</div>
+        </div>
+      </div>
+      <div class="info-card orange">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Languages Spoken</div>
+          <div class="info-val">English · Amharic · Agewegna · Tigrigna</div>
+        </div>
+      </div>
+      <div class="info-card cyan">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-val">wenay191919@gmail.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="section-tag">Technical Skills</div>
+  <h2 class="section-title">What I Work With 🛠️</h2>
+  <p class="section-desc">Technologies I've used in real projects and professional work.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-emoji">🌐</div>
+      <div class="skill-name">HTML & CSS</div>
+      <div class="skill-desc">Responsive web design</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-emoji">⚡</div>
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-desc">Interactive web apps</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-emoji">🐘</div>
+      <div class="skill-name">PHP</div>
+      <div class="skill-desc">Server-side development</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-emoji">🗄️</div>
+      <div class="skill-name">Database Admin</div>
+      <div class="skill-desc">2+ years professional</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-emoji">☕</div>
+      <div class="skill-name">Java</div>
+      <div class="skill-desc">OOP programming</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-emoji">⚙️</div>
+      <div class="skill-name">C++</div>
+      <div class="skill-desc">Systems programming</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<div class="projects-bg">
+<div class="section" id="projects">
+  <div class="section-tag">Projects</div>
+  <h2 class="section-title">Things I've Built 💡</h2>
+  <p class="section-desc">Real systems built to solve real problems.</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-badge badge-star">⭐ Thesis Project</div>
+      <div class="project-title">Customer Service Management System</div>
+      <p class="project-desc">A full web-based system for a water supply office. Customers submit service requests, track status, and receive updates. Admin dashboard for managing and resolving cases.</p>
+      <div class="project-tags">
+        <span class="tag">PHP</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">JavaScript</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-badge badge-work">💼 Work Project</div>
+      <div class="project-title">Court Database System</div>
+      <p class="project-desc">Administered the database for Abergelie Woreda Court for 2 years. Managed data integrity, access control, backups, and reliable record-keeping for all legal cases.</p>
+      <div class="project-tags">
+        <span class="tag">Database Admin</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Data Security</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-badge badge-progress">🔨 In Progress</div>
+      <div class="project-title">Personal Portfolio Website</div>
+      <p class="project-desc">This portfolio — built to showcase my work and skills to employers worldwide. Fully responsive, clean, and fast. Hosted free on GitHub Pages.</p>
+      <div class="project-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">GitHub Pages</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+  <div class="section-tag">Experience</div>
+  <h2 class="section-title">Where I've Worked 🏛️</h2>
+  <p class="section-desc">2 years of real professional experience in a government institution.</p>
+  <div class="exp-card">
+    <div class="exp-role">Database Administrator</div>
+    <div class="exp-org">Abergelie Woreda Court</div>
+    <div class="exp-period">📅 2 Years · Ethiopia</div>
+    <ul class="exp-list">
+      <li>Managed and maintained the court's database, ensuring data integrity and security for sensitive legal records</li>
+      <li>Performed regular database backups, recovery procedures, and performance optimization</li>
+      <li>Controlled user access and permissions to protect confidential case information</li>
+      <li>Supported court staff with data entry, retrieval, and reporting from the database</li>
+      <li>Worked reliably for 2 years in a structured government environment</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<div class="edu-bg">
+<div class="section" id="education">
+  <div class="section-tag">Education</div>
+  <h2 class="section-title">Academic Background 🎓</h2>
+  <p class="section-desc">Graduated as one of the top students in my program.</p>
+  <div class="edu-card">
+    <div class="edu-icon">🎓</div>
+    <div>
+      <div class="edu-degree">Bachelor of Science in Computer Science</div>
+      <div class="edu-school">Raya University, Ethiopia</div>
+      <div class="edu-year">Graduated July 2023</div>
+      <div class="edu-badges">
+        <span class="edu-badge eb-blue">⭐ CGPA: 3.90 / 4.00</span>
+        <span class="edu-badge eb-green">✅ Exit Exam: 79/100</span>
+        <span class="edu-badge eb-purple">🏆 Top Graduate</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="contact-bg">
+<div class="section" id="contact">
+  <div class="section-tag">Contact</div>
+  <h2 class="section-title">Let's Work Together 🤝</h2>
+  <p class="section-desc">Open to jobs, freelance, and remote opportunities worldwide.</p>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">I'm actively looking for Web Developer, Backend Developer, or Database roles — including remote positions globally. If you have an opportunity or want to connect, I'd love to hear from you!</p>
+      <div class="contact-links">
+        <a href="mailto:wenay191919@gmail.com" class="contact-link">
+          <div class="cl-icon">📧</div>
+          <div><div class="cl-label">Email</div><div class="cl-val">wenay191919@gmail.com</div></div>
+        </a>
+        <a href="tel:+251922044860" class="contact-link">
+          <div class="cl-icon">📞</div>
+          <div><div class="cl-label">Phone</div><div class="cl-val">+251 922 044 860</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/wenay-merawi-4a4626410" target="_blank" class="contact-link">
+          <div class="cl-icon">💼</div>
+          <div><div class="cl-label">LinkedIn</div><div class="cl-val">linkedin.com/in/wenay-merawi</div></div>
+        </a>
+        <a href="https://github.com/Wenaymerawi" target="_blank" class="contact-link">
+          <div class="cl-icon">🐙</div>
+          <div><div class="cl-label">GitHub</div><div class="cl-val">github.com/Wenaymerawi</div></div>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Your Email" />
+        <textarea placeholder="Your message — a job offer, collaboration, or just hello! 👋"></textarea>
+        <button onclick="alert('Thank you! Please email wenay191919@gmail.com directly.')">🚀 Send Message</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <p>© 2025 Wenay Merawi · Ethiopia 🇪🇹 &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/wenay-merawi-4a4626410" target="_blank">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/Wenaymerawi" target="_blank">GitHub</a>
+    &nbsp;·&nbsp; Made with ❤️ for the world
+  </p>
+</footer>
+
+</body>
+</html>
